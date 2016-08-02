@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX Exercise</title>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+</head>
+
+<body>
+
+<div id="title">Let AJAX change this text.</div>
+<div id="year"></div>
+<div id="rated"></div>
+<div id="released"></div>
+<div id="runtime"></div>
+<div id="genre"></div>
+<div id="director"></div>
+<div id="writer"></div>
+<div id="actors"></div>
+<div id="plot"></div>
+<div id="language"></div>
+<div id="country"></div>
+<div id="awards"></div>
+<div id="poster"></div>
+<div id="type"></div>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+
+
+
+</body>
+<script>
+
+function loadDoc() {
+
+	var xhttp;
+	
+	xhttp = new XMLHttpRequest();
+	
+	xhttp.onreadystatechange = function() {
+	
+		if (xhttp.readyState === 4 && xhttp.status === 200) {
+		
+			
+			
+			var object = JSON.parse(xhttp.responseText);
+			
+			
+		
+			document.getElementById('title').innerHTML = "Title: " + object.Title;
+			document.getElementById('year').innerHTML = "Year: " + object.Year;
+			document.getElementById('rated').innerHTML = object.Rated;
+			document.getElementById('released').innerHTML = object.Released;
+			document.getElementById('runtime').innerHTML = object.Runtime;
+			document.getElementById('genre').innerHTML = object.Genre;
+			document.getElementById('director').innerHTML = object.Director;
+			document.getElementById('writer').innerHTML = object.Writer;
+			
+			var names = (object.Actors).split(",");
+			
+			var a = document.getElementById('actors');
+			document.getElementById('actors').innerHTML = "Actors: ";
+			for (var ii = 0; ii < names.length; ii++) {
+				var myNewElement = document.createElement('div');
+				myNewElement.innerHTML = "<li>"+names[ii]+"</li>";
+				a.appendChild(myNewElement);
+			}
+			
+			
+			
+			document.getElementById('plot').innerHTML = object.Plot;
+			document.getElementById('language').innerHTML = object.Language;
+			document.getElementById('country').innerHTML = object.Country;
+			document.getElementById('awards').innerHTML = object.Awards;
+			document.getElementById('poster').innerHTML = object.Poster;
+			document.getElementById('type').innerHTML = object.Type;
+			
+			
+			//document.getElementById('title').innerHTML = xhttp.responseText;
+			
+		
+		}
+	
+	};
+	
+	xhttp.open("GET",'http://www.omdbapi.com/?t=batman&y=&plot=short&r=json', true);
+	
+	xhttp.send();
+};
+		
+
+</script>
+</html>

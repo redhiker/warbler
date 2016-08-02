@@ -2,18 +2,19 @@ var rock = 'rock';
 var scissors = 'scissors';
 var paper = 'paper';
 
+var validInput = false;
+var human;
+
 function domPrompt(msg) {
 	var myNewElement = document.createElement('div');
 	myNewElement.innerHTML = msg;
-	myNewElement.onClick = function(evt){
-		alert("click");
-	};
+	
 	
 	
 	document.body.appendChild(myNewElement);
 }
 
-domPrompt("this is a test");
+
 
 function domAlert(msg) {
 	var myNewElement = document.createElement('div');
@@ -22,24 +23,28 @@ function domAlert(msg) {
 	document.body.appendChild(myNewElement);
 }
 
-domPrompt("this is a second test");
+
 
 var input = document.getElementById('promptInput');
 
 promptInput.onkeydown = function(evt) {
 	if (evt.key === 'Enter') {
-		var human = promptInput.value;
-		computeWinner(human);
+		human = document.getElementById('promptInput').value;
+		
+		if ( human === 'rock' || human === 'paper' || human === 'scissors' ) {
+		
+			computeWinner(human);
+		}
 	};
 };
 
-var validInput = false;
-var human;
-/*
+
+
 do {
-	human = domPrompt("Enter rock, paper, or scissors:");
+	domPrompt("Enter rock, paper, or scissors:");
+	
 } while ( human === 'rock' || human === 'paper' || human === 'scissors' )
-	*/
+	
 
 function computeWinner(human) {
 	var computer = Math.floor(Math.random() * 3);
