@@ -2,58 +2,47 @@ var rock = 'rock';
 var scissors = 'scissors';
 var paper = 'paper';
 
+do {
+	var human = prompt("Enter rock, paper, or scissors:");
+} while ( human != 'rock' && human != 'paper' && human != 'scissors' )
 
-var userSelection = prompt("enter rock, paper, or scissors");
-
-
-var xyz;
-
-if ( userSelection === rock ) {
-	xyz = 0;
-} else if ( userSelection === paper ) {
-	xyz = 1;
-} else {
-	xyz = 2;
-};
 
 var computer = Math.floor(Math.random() * 3);
 
-var xyz2;
-
 if ( computer === 0 ) {
-	xyz2 = rock;
+	computer = rock;
 } else if ( computer === 1 ) {
-	xyz2 = paper;
+	computer = paper;
 } else {
-	xyz2 = scissors;
+	computer = scissors;
 };
 
-alert(userSelection + "..." + xyz2);
+alert(human + "..." + computer);
 
-if ( (userSelection === 'rock') && (xyz2 === 'paper') ) 
+if ( (human === 'rock') && (computer === 'paper') ) 
 {
 	alert("Sorry: paper covers rock");
 } 
-else if ( (userSelection === 'rock') && (xyz2 === 'scissors') ) 
+else if ( (human === 'rock') && (computer === 'scissors') ) 
 {
 	alert("You won: rock crushes scissors");
 } 
-else if ( (userSelection === 'scissors') && (xyz2 === 'rock') ) 
+else if ( (human === 'scissors') && (computer === 'rock') ) 
 {
 	alert("Sorry: rock crushes scissors");
 } 
-else if ( (userSelection === 'scissors') && (xyz2 === 'paper') ) 
+else if ( (human === 'scissors') && (computer === 'paper') ) 
 {
 	alert("You won: scissors cut paper");
 } 
-else if ( (userSelection === 'paper') && (xyz2 === 'scissors') ) 
+else if ( (human === 'paper') && (computer === 'scissors') ) 
 {
 	alert("Sorry: scissors cut paper");
 } 
-else if ( (userSelection === 'paper') && (xyz2 === 'rock') ) {
+else if ( (human === 'paper') && (computer === 'rock') ) {
 	alert("You won: paper coveres rock");
 } 
 else 
 {
-	alert("tie");
+	alert("tie: both players picked " + computer);
 }
