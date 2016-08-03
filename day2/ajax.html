@@ -43,37 +43,62 @@ function loadDoc() {
 		
 			
 			
-			var object = JSON.parse(xhttp.responseText);
+		/*	var data = JSON.parse(xhttp.responseText);
 			
+			var ul = document.createElement('ul');
 			
-		
-			document.getElementById('title').innerHTML = "Title: " + object.Title;
-			document.getElementById('year').innerHTML = "Year: " + object.Year;
-			document.getElementById('rated').innerHTML = object.Rated;
-			document.getElementById('released').innerHTML = object.Released;
-			document.getElementById('runtime').innerHTML = object.Runtime;
-			document.getElementById('genre').innerHTML = object.Genre;
-			document.getElementById('director').innerHTML = object.Director;
-			document.getElementById('writer').innerHTML = object.Writer;
+			for (var i in data) {
+				var li = document.createElement('li');
+				li.innerHTML = data[i];
+				ul.appendChild(li);			
+			}
+			document.body.appendChild(ul);
 			
-			var names = (object.Actors).split(",");
+		*/
+			document.getElementById('title').innerHTML = "Title: " + data.Title;
+			document.getElementById('year').innerHTML = "Year: " + data.Year;
+			document.getElementById('rated').innerHTML = "Rated: " + data.Rated;
+			document.getElementById('released').innerHTML = "Released: " + data.Released;
+			document.getElementById('runtime').innerHTML = "Run Time: " + data.Runtime;
+			document.getElementById('genre').innerHTML = "Genre: " + data.Genre;
+			document.getElementById('director').innerHTML = "Director: " + data.Director;
+			
+			var namesOfWriters = (data.Writer).split(",");
+			
+			var b = document.getElementById('writer');			
+			document.getElementById('writer').innerHTML = "Writers: ";
+			
+			var myOlb = document.createElement('ol');
+			b.appendChild(myOlb);
+			
+			for (var ii = 0; ii < namesOfWriters.length; ii++) {
+				var myNewElement = document.createElement('li');
+				myNewElement.innerHTML = namesOfWriters[ii];
+				myOlb.appendChild(myNewElement);
+			}
+			
+			var names = (data.Actors).split(",");
 			
 			var a = document.getElementById('actors');
 			document.getElementById('actors').innerHTML = "Actors: ";
+			
+			var myOl = document.createElement('ol');
+			a.appendChild(myOl);
+			
 			for (var ii = 0; ii < names.length; ii++) {
-				var myNewElement = document.createElement('div');
-				myNewElement.innerHTML = "<li>"+names[ii]+"</li>";
-				a.appendChild(myNewElement);
+				var myNewElement = document.createElement('li');
+				myNewElement.innerHTML = names[ii];
+				myOl.appendChild(myNewElement);
 			}
 			
 			
 			
-			document.getElementById('plot').innerHTML = object.Plot;
-			document.getElementById('language').innerHTML = object.Language;
-			document.getElementById('country').innerHTML = object.Country;
-			document.getElementById('awards').innerHTML = object.Awards;
-			document.getElementById('poster').innerHTML = object.Poster;
-			document.getElementById('type').innerHTML = object.Type;
+			document.getElementById('plot').innerHTML = "Plot: " + data.Plot;
+			document.getElementById('language').innerHTML = "Language: " + data.Language;
+			document.getElementById('country').innerHTML = "Country: " + data.Country;
+			document.getElementById('awards').innerHTML = "Awards: " + data.Awards;
+			document.getElementById('poster').innerHTML = "Poster: " + data.Poster;
+			document.getElementById('type').innerHTML = "Type: " + data.Type;
 			
 			
 			//document.getElementById('title').innerHTML = xhttp.responseText;
