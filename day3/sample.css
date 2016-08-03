@@ -1,0 +1,40 @@
+<div class="container">
+  
+  <div class="one">Larry</div>
+  <div class="two">Sarah</div>
+  
+</div>
+
+<div class="three"></div>
+
+.container {
+  width: 200px;
+  height: 100px;
+  background: pink;
+  display: block;
+}
+
+.one {
+  background: blue;
+  width: 50px;
+  color: white;
+  display: inline-block;
+  height: 50px;
+  vertical-align: top;
+}
+
+.two {
+  background: red;
+  width: 50px;
+  color: white;
+  display: inline-block;
+  height: 100px;
+  vertical-align: top;
+}
+
+.three {
+  width: 50px;
+  height: 100px;
+  background: green;
+}
+

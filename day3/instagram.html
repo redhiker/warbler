@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Instagram Exercise</title>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="instagram.js"></script>
+</head>
+
+<body>
+
+<label for="selectName">User</label>
+<select id="selectName" name="selectName">
+   <option value="Alice">Alice</option>
+   <option value="Bob">Bob</option>
+   <option value="Carol">Carol</option>
+   <option value="David">David</option>
+</select>
+<br/><br/>
+
+<button type="button" onclick="getInstagram()">Get Instagram</button>
+<br/><br/>
+
+<label for="selectName">Indicate Optional Filter on Image Description</label>
+<input id="indicateFilter" type="text" name="indicateFilter" onkeyup="handleFilter()"/>
+<br/><br/>
+
+<div id="imageDiv"></div>
+
+</body>
+
+</html>

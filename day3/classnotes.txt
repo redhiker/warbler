@@ -1,0 +1,100 @@
+Static: Java, c++, C# are typed.
+
+Dynamic: Javascript, Python, Ruby
+
+C/C++ + compiler = native code (can make direct system calls)
+
+Python + run time = intermediate byte code
+
+Jave + compiler = Java byte code + JVM (run time) = just in time compiler
+
+java
+
+java -version
+
+class (data type definition)
+	field (data member)
+	method(function member)
+	
+	Key Idea: encapsulation: 
+	methods act as interface to object's fields
+	methods public, fields private
+	
+	inheritance: a type may include all members from another type
+	Child inherits from Parent.
+	Cat inherits from Mammal.  Mammal inherits from Animal.
+	Cat -> Mammal -> Animal
+	
+	is-a vs. has-act
+	
+	class Foo  {
+	
+	Foo(int x){
+	this.x = x;
+	}
+	
+		static int z;
+		int x;
+		String y;
+		
+		void ack() {
+		}
+	}
+	
+	class Bar extends Foo {
+	
+		@override
+		void ack() {
+		}
+		
+	}
+	
+	Object is at the root.
+	
+	Overriding: redefining an inherited method
+	
+object.method(arguments)
+x.foo()
+
+polymorphism: depends upon type of x
+
+class member (static member): member of class itself, not its instances
+
+interface - specifies a set of methods, not actual code.
+
+interface Bar {
+	void adam(int, String);
+	String kate(char);
+}
+
+class Foo implements Bar {
+	void adam( int a, String) {
+	}
+}
+
+Bar b = new Foo();
+b.adam(3,"hi");
+
+if (b instanceof Foo) {
+	Foo f = (Foo) b;
+}
+
+ABSTRACT CLASS - a class which cannot be instantiated
+
+prototypical inheritance 
+- OOP without classes: producing child instances from parent instances.
+
+name space: separate bag,  package
+
+enumeration
+
+enum RPS {
+	rock, paper, scissors
+	}
+	
+	RPS rps = RPS.rock;
+
+package class field method statement expression
+	interface
+	enum
+	
