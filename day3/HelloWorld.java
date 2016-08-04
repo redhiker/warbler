@@ -11,4 +11,5 @@ public class HelloWorld extends Object {
 	
 	// javac HelloWorld.java
 	// java -cp . HelloWorld
+	// "C:\Program Files\Java\jdk1.8.0_102\bin\javac" HelloWorld.java
 }
