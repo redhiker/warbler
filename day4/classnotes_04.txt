@@ -1,0 +1,40 @@
+Animal a;
+a = new Animal();
+a = new Mammal();
+a = new Cat();
+a.sleep();
+
+if ( a instanceof Cat ) {
+	c = (Cat) a;
+}
+
+Animal a = new Animal();
+try {
+	a.sleep();
+} catch (EmptyStackException ex) {
+
+} catch (Exception ex) {
+
+} finally {
+	// Always done.
+}
+
+Unchecked exceptions: run time exceptions, such as null pointer exception
+
+public void foo() throws Exception {
+	Animal a = new Animal();
+	a.sleep(); // throws MyException, checked
+	a.eat(); // MyOtherException
+}
+
+public void bar() {
+	try {
+		this.foo();
+	} catch(MyException ex) {
+	}
+}
+
+Animal a = new Animal();
+Animal b = new Animal();
+if (a.equals(b)) {}
+
