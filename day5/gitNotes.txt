@@ -1,0 +1,5 @@
+git add .
+git commit -m "some message"
+git push
+
+C:\Users\admin\workspace>git clone https://github.com/toniali/ssa4week-twitter.git
