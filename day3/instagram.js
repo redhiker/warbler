@@ -12,7 +12,7 @@ function getInstagram () {
 	
 		if (xhttp.readyState === 4 && xhttp.status === 200) {
 			
-			var filterString = document.getElementById('indicateFilter').value;
+			
 			
 			// Remove previous images....
 			
@@ -41,5 +41,16 @@ function getInstagram () {
 }
 
 function handleFilter() {
+	
+	var filteredImageArray = [];
+	
+	var filterString = document.getElementById('indicateFilter').value;
+	
+	for ( var ii = 0; ii < imagesArr.length; ii++ ) {
+		if ( imagesArr[ii].description.includes(filterString) ) {
+			filteredImageArray.push(imagesArr[ii]);
+		}
+	}
+	//renderImages(filteredImageArr);
 	
 }
