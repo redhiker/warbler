@@ -11,10 +11,10 @@ try {
     dbexists = false;
 }
 
-var db = new sqlite3.Database('scratch.db');
-
 function getUserJSON(callBack) {
+	
 	return new Promise((resolve, reject) => {
+		var db = new sqlite3.Database('scratch.db');
 		var query = "SELECT * FROM USER ";
 		var users = [];
 		db.serialize(function() {
@@ -32,17 +32,8 @@ function getUserJSON(callBack) {
 				}
 			);
 		});
+		db.close();
 	});
 }
 
-var p = getUserJSON();
-p.then(
-    (val) => {
-        console.log(val);
-    },
-    (err) => {
-        console.log('oh no!', err);
-    }
-);
-
-db.close();
+module.exports.getUserJSON = getUserJSON;

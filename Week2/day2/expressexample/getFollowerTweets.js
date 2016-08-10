@@ -11,10 +11,9 @@ try {
     dbexists = false;
 }
 
-var db = new sqlite3.Database('scratch.db');
-
 function getFollowerTweetsJSON(userId, callBack) {
 	return new Promise((resolve, reject) => {
+		var db = new sqlite3.Database('scratch.db');
 		var query = "SELECT TWEET FROM TWEET " 
 		+ "INNER JOIN FOLLOWER " 
 		+ "ON TWEET.USERID=FOLLOWER.FOLLOWERID "
@@ -35,17 +34,8 @@ function getFollowerTweetsJSON(userId, callBack) {
 				}
 			);
 		});
+		db.close();
 	});
 }
 
-var p = getFollowerTweetsJSON('abu');
-p.then(
-    (val) => {
-        console.log(val);
-    },
-    (err) => {
-        console.log('oh no!', err);
-    }
-);
-
-db.close();
+module.exports.getFollowerTweetsJSON = getFollowerTweetsJSON;

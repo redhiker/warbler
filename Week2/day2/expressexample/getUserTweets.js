@@ -11,10 +11,9 @@ try {
     dbexists = false;
 }
 
-var db = new sqlite3.Database('scratch.db');
-
 function getUserTweetsJSON(userId, callBack) {
 	return new Promise((resolve, reject) => {
+		var db = new sqlite3.Database('scratch.db');
 		var query = "SELECT USERID, TWEET FROM TWEET "
 			 + "  WHERE USERID = '" + userId + "'";
 		var userTweets = [];
@@ -33,17 +32,8 @@ function getUserTweetsJSON(userId, callBack) {
 				}
 			);
 		});
+		db.close();
 	});
 }
 
-var p = getUserTweetsJSON('shuvo');
-p.then(
-    (val) => {
-        console.log(val);
-    },
-    (err) => {
-        console.log('oh no!', err);
-    }
-);
-
-db.close();
+module.exports.getUserTweetsJSON = getUserTweetsJSON;
