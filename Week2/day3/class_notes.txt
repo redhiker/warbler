@@ -1,0 +1,30 @@
+var arr = [3,5,9];
+
+var arr2 = arr.map(function(val) {
+	return val + 10;
+});
+
+console.log(arr, arr2);
+
+var arr2 = arr.filter(function(element,index,array) => {
+	//console.log(element,index, array);
+	return element < 6;
+});
+
+console.log('arr2',arr2);
+
+for (var i=0; i<arr.length; i++) {
+	if (arr[i] < 6) {
+		arr2.push(arr[i]);
+	}
+}
+
+node debug example2.js
+ npm install -g node-inspector (need chrome)
+ 
+lodash.js immutable.js
+
+npm install --global mocha
+
+TEst: mocha example2.js
+
