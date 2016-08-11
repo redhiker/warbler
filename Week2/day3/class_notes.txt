@@ -28,3 +28,4 @@ npm install --global mocha
 
 TEst: mocha example2.js
 
+mocha lodash-test.js | more

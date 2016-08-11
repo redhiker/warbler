@@ -1,0 +1,29 @@
+TTD reasons
+	1) lazy programmers
+	2) requirements driven
+	3) avoid unnecessary code
+	4) make assumptions explicit
+	5) better code design
+- regression, confidence
+A unit test should be
+	simple
+	fast
+	isolated
+
+Stub - does nothing
+Mock - fakes work
+Fake
+Spy
+Dummy
+Dependency injection
+Law of Demeter - you only ask for objects which you directly operate on
+Pile of objects - get the collaborators needed
+pile of new keywords. dependency injection managed
+Guice
+Clean code talks
+business/work - wiring factory builders
+
+==============================================
+
+git clone (repository url)
+npm install express mocha sqlite3 --save
