@@ -1,0 +1,84 @@
+microservice - small service
+
+SOA (big) vs microservice (small)
+
+common characteristics of microservices
+componentization via service
+organized around businss capabilities
+projects not projects
+smart endpoints and dumb pipes
+decentralized governance
+decentralized data management
+infrastructure automation
+design for failure
+evolutionary design
+
+self hosting
+hosting service
+virtual hosting service
+platform as a service (PaaS)
+containers (such as Docker)
+
+each microservice could be a web server, a data source, or a combination of the two: 
+no hard distinctionin other words, 
+each can have own persistence layermicroservices 
+pros vs monolith SOA
+    'hey, we want this new feature, let's add it to existing codebase 
+	vs. let's add a new, separate service'    
+pro: more flexible deployment / scaling    
+pro: get away from heavy-weight dependencies, overly-prescriptive frameworks    
+pro: cuts down friction in large organizations    
+pro: get away from single-language, -platform dependence    
+pro: embrace component failure / redundency    
+con: more network overhead    
+con: consistency / coherence problems    
+con: if you get too fine-grained, the services often get too abstract    
+con: adds unnecessary indirection / fracturing for small teams        
+con: end up with large system composed out of excessive number of languages/platforms    
+con: constructing out of smaller pieces may require more glue    
+con: embrace component failure / redundency: tolerating/hiding bugs that should be fixed    
+con: how do I debug across separate services?    
+con: https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing
+
+https://docs.docker.com/engine/understanding-docker/	
+
+Docker:
+docker version
+docker images
+docker search -s 1000 ubuntu
+docker run -i -t ubuntu ./bin/bash
+docker run -it -v /microservice:/host -p 9000:3000 ubuntu-node:0.1 ./bin/bash
+ps
+docker run -d --name=my_container ubuntu sleep 15
+
+docker ps -abstract
+docker commit -a larry 22d ubuntu-node:0.1
+
+boot2docker ip
+
+docker ps -a
+docker commit -a larry b4e node-microservice:0.1
+docker images
+docker run -d (background) -w /microservice (path in microservice container) -p 9000:3000 node-microservice:0.1 start
+docker attach 3d61
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
