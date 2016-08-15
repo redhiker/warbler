@@ -1,0 +1,62 @@
+Single page application (SPA) - never directed away, although the url may change.
+
+Model View Controller (MVC) 
+model = program data, 
+view = presentation layer,
+controller ties the two together
+
+Angular JS is a model for creating SPA (app=model)
+dependecy injection
+directives custom HTML
+scope objects (data binding) 2-way
+scope tracks changes
+
+angular by 50 examples
+
+F12 debugging in browser.
+
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js
+
+
+
+
+
+keyCode === 13
+9:59 function(event) {
+   if (event.keyCode === 13) {
+       // user hit enter
+   }
+}
+
+<html ng-app="nameApp">
+
+<head>
+   <meta charset="utf-8">
+   <title>Day11, Assignment1</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+   <script>
+        var nameApp = angular.module('nameApp', []);
+         nameApp.controller('TaskCtrl', function ($scope) {
+             $scope.tasks = ['Larry', 'Curly', 'Moe'];
+       
+            $scope.addTask = function (event) {
+                  console.log("AddTack  invoked", $scope.Enteredtask);
+                  if (event.keyCode === 13) {
+                      console.log("Enter key pressed");
+                      $scope.tasks.push($scope.Enteredtask);
+                      $scope.$apply();
+                  }
+            };
+         });        
+
+   </script>
+ </head>
+ <body ng-controller="TaskCtrl">
+    <!--  Enter task: <input ng-model="Enteredtask" type="text" onkeypress="addTask()"/>-->
+    Enter task: <input ng-model="Enteredtask" type="text" ng-keypress="addTask($event)"/>
+    <!--  Enter task: <input ng-model="Enteredtask" type="text" ng-keydown="addTask"/>-->
+   <ul>
+     <li ng-repeat="task in tasks">{{task}}</li>
+   </ul>>
+ </body>
+</html>

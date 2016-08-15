@@ -1,0 +1,37 @@
+<html ng-app="validateApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script>
+      var validateApp = angular.module('validateApp', []);
+      validateApp.controller('ValidateCtrl', function ($scope) {
+
+          $scope.errName = false;
+
+          $scope.submitUserInfo = function() {
+
+              alert($scope.userName.length);
+
+              if ($scope.userName.length == 0) {
+                  $scope.errName = true;
+              } else {
+                  $scope.errName = false;
+              }
+          };
+
+          
+        
+      });
+    </script>
+  </head>
+  <body ng-controller="ValidateCtrl">
+
+      <input ng-model="userName" id="userNameId" type="text"/>
+
+      <button ng-model="submitButton" ng-click="submitUserInfo()">Submit</button>
+
+      <span ng-show="errName">User Name cannot be empty.</span>
+      
+  </body>
+</html>

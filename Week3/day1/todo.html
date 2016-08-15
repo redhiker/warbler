@@ -1,0 +1,50 @@
+<html ng-app="todoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script>
+      var todoApp = angular.module('todoApp', []);
+      todoApp.controller('TodoCtrl', function ($scope, $http){
+
+        $scope.todos = [];
+
+        $scope.add = function(event) {
+            
+            if (event.keyCode === 13) { // enter
+                
+                $scope.todos.push($scope.whatNeedsToBeDone);
+                $scope.whatNeedsToBeDone = '';
+                $scope.$apply();
+            }
+        };
+
+        $scope.enableOrDisable = function(t) {
+            
+            
+            
+        };
+        
+      });
+    </script>
+  </head>
+  <body ng-controller="TodoCtrl">
+
+      <div ng-show=""></div>
+      <p>Key in New Task....</p>
+    <input ng-model="whatNeedsToBeDone" type="text" ng-keyup="add($event)"/>
+    <table>
+      <tr ng-repeat="todo in todos track by $index">
+        <td><input
+            type="checkbox"
+            name="todos[]"
+            value="{{todo}}"
+            ng-model="todoTask.selected"
+            ng-click="enableOrDisable(todo)"
+            />
+        </td>
+        <td>{{todo}}</td>
+      </tr>
+    </table>
+  </body>
+</html>

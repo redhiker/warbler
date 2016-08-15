@@ -1,0 +1,36 @@
+<html ng-app="taskApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script>
+      var taskApp = angular.module('taskApp', []);
+
+      taskApp.controller('TaskCtrl', function ($scope){ 
+
+        $scope.tasks = [];       
+        
+        //var x = document.getElementById("newtask");        
+        
+        $scope.add = function(event) {
+            
+            if (event.keyCode === 13) { // enter
+                
+               $scope.tasks.push($scope.nextTask);
+               $scope.nextTask = '';
+               $scope.$apply();
+            }
+        };
+        
+      });
+    </script>
+  </head>
+  <body ng-controller="TaskCtrl">
+      Next Task: 
+        <input ng-model="nextTask" 
+            type="text" id="newtask" ng-keyup="add($event)"/>
+    <ul>
+      <li ng-repeat="task in tasks track by $index">{{task}}</li>
+    </ul>
+  </body>
+</html>
