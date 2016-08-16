@@ -7,22 +7,35 @@
       var todoApp = angular.module('todoApp', []);
       todoApp.controller('TodoCtrl', function ($scope, $http){
 
+        var todo = {};
+        todo.name = "";
+        todo.isDisabled = false;
+
+        $scope.todo = todo;
+
         $scope.todos = [];
 
         $scope.add = function(event) {
             
             if (event.keyCode === 13) { // enter
+
+                var newTodo = {
+                   name: $scope.whatNeedsToBeDone,
+                   isDisabled:false
+                };
                 
-                $scope.todos.push($scope.whatNeedsToBeDone);
+                $scope.todos.push(newTodo);
                 $scope.whatNeedsToBeDone = '';
                 $scope.$apply();
             }
         };
 
         $scope.enableOrDisable = function(t) {
-            
-            
-            
+           if (t.isDisabled) {
+             t.isDisabled = false;
+           } else {
+             t.isDisabled = true;
+           }
         };
         
       });
@@ -41,9 +54,10 @@
             value="{{todo}}"
             ng-model="todoTask.selected"
             ng-click="enableOrDisable(todo)"
+            ng-disabled="{{todo.isDisabled}}"
             />
         </td>
-        <td>{{todo}}</td>
+        <td>{{todo.name}} + {{todo.isDisabled}}</td>
       </tr>
     </table>
   </body>

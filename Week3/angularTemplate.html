@@ -1,16 +1,43 @@
-<html ng-app="todoApp">
+<html ng-app="formApp">
   <head>
     <meta charset="utf-8">
     <title>Angular.js Example</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
     <script>
-      var todoApp = angular.module('todoApp', []);
-      todoApp.controller('TodoCtrl', function ($scope) {
+      var formApp = angular.module('formApp', []);
+      formApp.controller('FormCtrl', function ($scope) {
+
+        $scope.isNameValidated = false;
+
+        var form = {};
+        form.name = "";
+
+        $scope.form = form;
+
+        $scope.add = function(event) {
+            
+            if (event.keyCode === 13) { // enter
+                
+                $scope.$apply();
+            }
+        };
+
+        $scope.submit = function() {
+
+        };
         
       });
     </script>
   </head>
-  <body ng-controller="TodoCtrl">
+  <body ng-controller="FormCtrl">
+
+    <br/>
+      Name: <input type="text" ng-model="form.name" ng-keyup="add($event)" />
+    <br/>
+    <span ng-show="isNameValidated">Name cannot be empty</span>
+    <br/>
+
+    <button ng-click="submit()">Submit</button>
 
       
   </body>
