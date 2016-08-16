@@ -27,3 +27,8 @@ business/work - wiring factory builders
 
 git clone (repository url)
 npm install express mocha sqlite3 --save
+
+FOREIGN KEY (USERID) REFERENCES SLACK_MEMBERS(USERID)
+
+ALTER TABLE SLACK_TEAM_MEMBERS
+add constraint MyTable_MyColumn_FK FOREIGN KEY ( MyColumn ) references MyOtherTable(PKColumn)

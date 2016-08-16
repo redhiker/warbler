@@ -60,3 +60,26 @@ keyCode === 13
    </ul>>
  </body>
 </html>
+
+
+In angular JS you must have ng-app module name
+
+ng-controller = controller name
+ng-show = " condition "
+ng-hide = " condition "
+ng-if = " condition "
+ng-click = " expression "
+ng-keyup = " expression "
+ng-switch
+ng-switch-when
+ng-repeat = "x in array | filter:foo track by $index"
+ng-submit
+
+ng-src = on image tag
+
+ng-view  = where all the templates get inserted.
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+
+home page (single page app)

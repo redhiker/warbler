@@ -1,0 +1,95 @@
+<html ng-app="shopApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+
+    <script>
+      var shopApp = angular.module('shopApp', ['ngRoute']);
+
+      shopApp.value('cart',[]);
+
+      shopApp.config(function($routeProvider) {
+        $routeProvider.
+          when('/', {
+            templateUrl: 'category-list.html',
+            controller: 'CategoryListCtrl'
+          }).
+          when('/:categoryitem', {
+            templateUrl: 'item-detail.html',
+            controller: 'ItemDetailCtrl'
+          }).
+          otherwise({
+            redirectTo: '/'
+          });
+      });
+
+      shopApp.factory('displayList', function($http){
+
+        var cart = []; // set up cart now.
+
+        var cachedData;
+
+        function getData(callback){
+          if(cachedData) {
+            callback(cachedData);
+          } else {
+            $http.get('shop.json').success(function(data){
+              cachedData = data;
+              callback(data);
+            });
+          }
+        }
+        return {
+          list: getData,
+          find: function(category, callback){
+              
+            getData(function(data) {
+              var item = data.filter(function(entry){
+                  
+                return entry.category === category;
+              });
+
+              callback(item);
+            });
+          }
+        };
+      });
+
+      shopApp.controller('CategoryListCtrl', function ($scope, displayList){
+        displayList.list(function(shop) {
+            var categoryList = [];
+            var objectList = []; // use set here.
+            for(var i=0;i<shop.length;i++) {
+                if ( categoryList.indexOf(shop[i].category) === -1 ) {
+                    categoryList.push(shop[i].category);
+                    objectList.push(shop[i]);
+                }
+            }
+            // $location.url('/cart');
+            $scope.displayList = objectList;
+        });
+      });
+
+      shopApp.controller('ItemDetailCtrl', function ($scope, $routeParams, displayList){
+        displayList.find($routeParams.categoryitem, function(item) {
+            var itemList = [];
+            var objectList = []; // use set here
+            for(var i=0;i<item.length;i++) {
+                if ( itemList.indexOf(item[i].item) === -1 ) {
+                    itemList.push(item[i].item);
+                    objectList.push(item[i]);
+                }
+            }
+            
+            $scope.displayList = objectList;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div ng-view></div>
+    <div id="footer">Copyright 2016.  Shop Application.</div>
+  </body>
+</html>

@@ -26,6 +26,8 @@
     </script>
   </head>
   <body ng-controller="TaskCtrl">
+    <div id="messageDivId"></div>
+    
       Next Task: 
         <input ng-model="nextTask" 
             type="text" id="newtask" ng-keyup="add($event)"/>
