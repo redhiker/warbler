@@ -1,0 +1,82 @@
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+
+npm install -g js-beautify
+
+js-beautify -r somefile.js
+
+Jenkins https://jenkins.io/
+user: ssa
+pw: ssa4week127
+http://159.203.205.62:8080/
+
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+    <li ng-class="{active: activetab=='/home'}"><a href="#/">Home</a></li>
+    <li ng-class="{active: activetab=='/Teams'}"><a a href="#/Teams.html">Team</a></li>
+    <li ng-class="{active: activetab=='/channel'}"><a a href="#/channel.html">Channel</a></li>
+    <li ng-class="{active: activetab=='/message'}"><a href="#/Message">Message</a></li>
+    <li ng-class="{active: activetab=='/administration'}"><a href="#/administration.html">Administration</a></li>
+    <li ng-class="{active: activetab=='/login'}"><a href="login.html">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+    <li><a href="#/">Home</a></li>
+    <li><a a href="#/Teams.html">Team</a></li>
+    <li><a a href="#/channel.html">Channel</a></li>
+    <li><a href="#/Message">Message</a></li>
+    <li ng-class="{active: activetab=='/administration'}><a href="#/administration.html">Administration</a></li>
+    <li><a href="login.html">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+.run(['$rootScope', '$location', function($rootScope, $location){
+   var path = function() { return $location.path();};
+   $rootScope.$watch(path, function(newVal, oldVal){
+       alert('we are here:'+newVal);
+     $rootScope.activetab = newVal;
+   });
+}]);
+
+<html ng-app="formApp"> <head> <meta charset="utf-8"> <title>To Do Example</title> <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> <script> var formApp = angular.module('formApp', []); formApp.controller('FormCtrl', function ($scope){ $scope.errName = false; $scope.errEmail = false; $scope.errWebsite = false; $scope.errMessage = false; var form = {}; form.name = ""; form.email = ""; form.website = "" ; form.message = ""; $scope.form = form; $scope.update = function( event, t) { if( event.keyCode === 13 ){ console.log(event); switch(t) { case 'name': var name = event.target.value; if( name.length == 0 ) $scope.errName = true; else $scope.errName = false; break; case 'email': var email = event.target.value; if( email.indexOf('@') == -1 ) $scope.errEmail = true; else $scope.errEmail = false; break; case 'website': var website = event.target.value; if( !website.startsWith("http://") ) $scope.errWebsite = true; else $scope.errWebsite = false; break; case 'message': var message = event.target.value; if( message.length == 0 ) $scope.errMessage = true; else $scope.errMessage = false; break; default: } } }; }); </script> </head> <body ng-controller="FormCtrl"> <br/> Name: <input type="text" ng-model="form.name" ng-keyup="update($event, 'name')" /> <br/> <span ng-show="errName">Name cannot be empty</span> <br/> Email: <input type="text" ng-model="form.email" ng-keyup="update($event, 'email')" /> <br/> <span ng-show="errEmail">Email contains an @</span> <br/> Website: <input type="text" ng-model="form.website" ng-keyup="update($event, 'website')" /> <br/> <span ng-show="errWebsite">Website must start with http://</span> <br/> Message: <input type="text" ng-model="form.message" ng-keyup="update($event, 'message')" /> <br/> <span ng-show="errMessage">Message cannot be empty</span> <br/> </body></html>
+
+in sender:
+
+
+
+$rootScope.$broadcast('foo', 7, 2, 11);
+
+in receiver:
+
+
+
+$scope.$on('foo', function (event, a, b, c) {
+
+   // do stuff with a b c
+
+});
+
+	<li ng-class="{active: activetab=='/'}"><a href="#/">Home</a></li>
+    <li ng-class="{active: activetab=='/Teams.html'}"><a a href="#/Teams.html">Team</a></li>
+    <li ng-class="{active: activetab=='/channel.html'}"><a a href="#/channel.html">Channel</a></li>
+    <li ng-class="{active: activetab=='/Message'}"><a href="#/Message">Message</a></li>
+    <li ng-class="{active: activetab=='/administration.html'}"><a href="#/administration.html">Administration</a></li>
+    <li><a href="login.html">Logout</a></li>
+	
+	==========================================================================
+	
+	$rootScope.tabs = ['home.html','/channel.html','/administration.html','/Teams.html'];
+	
+	<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li ng-repeat="tab in tabs" ng-class="{active: activetab=='/' + tab}"><a href="{
+      #/ + tab}">{{tab}}</a></li>
+    </ul>
+  </div>
+</nav>
