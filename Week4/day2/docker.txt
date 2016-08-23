@@ -1,0 +1,111 @@
+Dockerizing a Node.js web app
+
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
+
+lood at package.json
+============
+{
+  "name": "docker_web_app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "First Last <first.last@example.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
+
+create server.js
+=========
+'use strict';
+
+const express = require('express');
+
+// Constants
+const PORT = 8080;
+
+// App
+const app = express();
+app.get('/', function (req, res) {
+  res.send('Hello world\n');
+});
+
+app.listen(PORT);
+console.log('Running on http://localhost:' + PORT);
+
+
+
+=========================================
+
+touch Dockerfile
+
+=================
+
+FROM node:argon
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package.json /usr/src/app/
+RUN npm install
+
+# Bundle app source
+COPY . /usr/src/app
+
+EXPOSE 8080
+
+CMD [ "npm", "start" ]  // or cmd npm start
+
+
+===================
+building your image:
+
+$ docker build -t <your username>/node-web-app .
+
+running
+=======
+
+$ docker run -p 49160:8080 -d <your username>/node-web-app
+
+==============
+print output
+
+# Get container ID
+$ docker ps
+
+# Print app output
+$ docker logs <container id>
+
+
+=============================
+
+> docker
+
+> docker images
+
+>docker-node / docker-machine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
