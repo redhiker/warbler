@@ -1,2 +1,39 @@
 http://localhost:3000/slack.html#/
 
+Tips:
+
+Use your debuggers
+
+Delete commented code.
+
+Format your code. (install js-beautify)
+
+Use four space tab.
+
+Directives:
+
+In js code:
+
+angular.module('docsSimpleDirective', [])
+.controller('Controller', ['$scope', function($scope) {
+  $scope.customer = {
+    name: 'Naomi',
+    address: '1600 Amphitheatre'
+  };
+}])
+.directive('myCustomer', function() {
+  return {
+    template: 'Name: {{customer.name}} Address: {{customer.address}}'
+  };
+});
+
+In html:
+
+
+
+<div ng-controller="Controller">
+  <div my-customer></div>
+</div>
+
+
+

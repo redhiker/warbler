@@ -3,7 +3,7 @@ Dockerizing a Node.js web app
 https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 
 
-lood at package.json
+look at package.json
 ============
 {
   "name": "docker_web_app",
@@ -58,7 +58,7 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD [ "npm", "start" ]  // or cmd npm start
 
@@ -71,7 +71,7 @@ $ docker build -t <your username>/node-web-app .
 running
 =======
 
-$ docker run -p 49160:8080 -d <your username>/node-web-app
+$ docker run -p 49160:3000 -d <your username>/node-web-app
 
 ==============
 print output
@@ -89,7 +89,19 @@ $ docker logs <container id>
 
 > docker images
 
->docker-node / docker-machine
+>docker-machine ls
+
+Look for port tcp://1xx.1xx.1xx.1xx:zzzz
+
+In browser go to //1xx.1xx.1xx.1xx:49160
+
+To stop job 
+
+> docker stop (container id)
+
+# Enter the container
+
+$ docker exec -it <container id> /bin/bash
 
 
 

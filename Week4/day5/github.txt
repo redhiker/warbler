@@ -1,0 +1,5 @@
+Slack clone: https://github.com/chedgy/slackClone.git
+
+warbler: https://github.com/redhiker/warbler.git
+
+slack version 1: https://github.com/redhiker/slack.git
