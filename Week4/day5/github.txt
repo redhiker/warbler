@@ -1,5 +1,22 @@
-Slack clone: https://github.com/chedgy/slackClone.git
 
-warbler: https://github.com/redhiker/warbler.git
+To clone: git clone <repository url>
 
-slack version 1: https://github.com/redhiker/slack.git
+Status: git status
+
+Adding file changes: git add .
+
+Commit changes: git commit -m "message"
+
+Push to repository: git push
+
+Pull from repository: git pull
+
+Replace individual file from repository: git checkout -- <file>
+
+===================================================================
+
+Slack clone repository: https://github.com/chedgy/slackClone.git
+
+warbler repository: https://github.com/redhiker/warbler.git
+
+slack version 1 repository: https://github.com/redhiker/slack.git

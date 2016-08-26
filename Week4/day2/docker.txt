@@ -103,6 +103,10 @@ To stop job
 
 $ docker exec -it <container id> /bin/bash
 
+To delete exited containers
+
+docker rm -v $(docker ps -a -q -f status=exited)
+
 
 
 
